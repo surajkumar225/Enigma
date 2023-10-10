@@ -4,7 +4,6 @@ import SideBarContent from "./SideBarContent";
 
 const StyledDrawer = styled(Drawer)({
     marginTop: 54,
-    background: 'black'
   
 })
 
@@ -24,7 +23,7 @@ const SideBar = ({ toggleDrawer, openDrawer }) => {
                 '& .MuiDrawer-paper': { 
                     width: 250,
                     borderRight: 'none',
-                    background: 'black',
+                    background: '#001d35',
                     color: 'white',
                     marginTop: '64px',
                     height: 'calc(100vh - 64px)'

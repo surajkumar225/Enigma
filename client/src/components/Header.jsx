@@ -5,7 +5,7 @@ import { Menu as MenuIcon, Tune, HelpOutlineOutlined, SettingsOutlined,
 import { ducklogo } from '../constants/constant';
 
 const StyledAppBar = styled(AppBar)`
-    background: black;
+    background: #000517;
     box-shadow: none;
 `;
 

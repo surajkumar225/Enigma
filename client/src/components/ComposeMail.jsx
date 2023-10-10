@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Dialog, styled, Typography, Box, InputBase, TextField, Button } from '@mui/material'; 
 import { Close, DeleteOutline } from '@mui/icons-material';
-
+import useApi from '../hooks/useApi';
+import { API_URL } from '../services/api.url';
 
 const dialogStyle = {
     height: '90%',
@@ -54,11 +55,12 @@ const SendButton = styled(Button)`
 
 const ComposeMail = ({openDialog, setOpenDialog}) => {
     const [data, setData] = useState({});
+    const sentEmailService = useApi(API_URL.saveSentEmail);
 
     const config = {
         Host: 'smtp.elasticemail.com',
-        Username: "surkdawson252506@yopmail.com",
-        Password: "EF01A6636E2963BCBA1C41C65F759AE4413D",
+        Username: process.env.REACT_APP_USERNAME,
+        Password: process.env.REACT_APP_PASSWORD,
         Port: 2525,
     }
 
@@ -71,7 +73,6 @@ const ComposeMail = ({openDialog, setOpenDialog}) => {
         e.preventDefault();
         setOpenDialog(false);
     }
-
 
     const sendMail = (e) => {
         e.preventDefault();
@@ -86,6 +87,28 @@ const ComposeMail = ({openDialog, setOpenDialog}) => {
              message => alert(message)
             );
         }
+
+        const payload = {
+            to: data.to,
+            from: 'surajk2542@gmail.com',
+            subject: data.subject, 
+            body: data.body,
+            date: new Date(),
+            image: '',
+            name: 'Surk',
+            starred: false,
+            type: 'sent'
+        }
+
+        sentEmailService.call(payload);
+
+        if(!sentEmailService.error){
+            setOpenDialog(false);
+            setData({});
+        } else{
+            
+        }
+
         setOpenDialog(false);
     }
 
