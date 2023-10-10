@@ -1,4 +1,5 @@
-import { useOutletContext , useParams} from "react-router-dom";
+// import { useOutletContext , useParams} from "react-router-dom";
+import { useOutletContext} from "react-router-dom";
 
 
 const Emails = () => {
@@ -7,7 +8,7 @@ const Emails = () => {
 
     return (
         <div style={openDrawer ? { marginLeft: 250, width: '100%' } : { width: '100%' } }>
-            helloo</div>
+            hell0000oo</div>
     )
 }
 
